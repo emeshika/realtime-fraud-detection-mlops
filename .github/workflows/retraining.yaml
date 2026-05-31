@@ -1,0 +1,22 @@
+name: Retraining Pipeline
+on:
+  schedule:
+    - cron: '0 0 1 * *'
+  workflow_dispatch:
+
+env:
+  DRIFT_THRESHOLD: '0.5'
+  ACCURACY_TARGET: '0.85'
+  F1_SCORE_TARGET: '0.80'
+
+jobs:
+  retrain:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Print retraining configuration
+        run: |
+          echo "Drift threshold: $DRIFT_THRESHOLD"
+          echo "Accuracy target: $ACCURACY_TARGET"
+          echo "F1 score target: $F1_SCORE_TARGET"

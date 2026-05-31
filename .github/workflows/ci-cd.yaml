@@ -1,0 +1,47 @@
+name: MLOps Real-Time Platform CI/CD
+
+# Trigger the workflow on push or pull request to the main branch
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  continuous-integration:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Check out the repository code
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    # Step 2: Set up Python Environment inside GitHub Runner
+    - name: Set up Python 3.12
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+
+    # Step 3: Install all core dependencies
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    # Step 4: Run Code Quality Checks (Linting/Syntax validation)
+    - name: Run Python Syntax Check
+      run: |
+        python -m py_compile src/data_pipeline.py src/train.py api/app.py
+
+  docker-build:
+    needs: continuous-integration
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    # Step 5: Simulate building the Docker Image to ensure no deployment breaks
+    - name: Build Docker Image
+      run: |
+        docker build -f deployment/Dockerfile -t fraud-detection-api:latest .

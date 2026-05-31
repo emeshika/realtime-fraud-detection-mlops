@@ -1,0 +1,57 @@
+# 1. Virtual Environments 
+venv/
+ENV/
+env/
+.env
+.venv
+pip-log.txt
+pip-delete-this-directory.txt
+
+# 2. Python Bytecode & Compiled Artifacts 
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.ipynb_checkpoints/
+*/__pycache__/
+
+# 3. Large Datasets 
+data/raw/*
+data/processed/*
+*.csv
+*.xlsx
+*.parquet
+
+# 4. Machine Learning Models & Saved Weights 
+models/*.joblib
+models/*.pkl
+models/*.h5
+models/*.onnx
+
+# 5. MLflow Tracking Logs & Databases 
+mlruns/
+mlruns.db
+mlflow.db
+.mlflow/
+
+# 6. Dynamic Monitoring Dashboard HTML 
+monitoring/*.html
+*.html
+
+# 7. VS Code & IDE Configurations 
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# 8. Operating System System Files 
+.DS_Store
+.DS_Store?
+_Macintosh
+Thumbs.db
+ehthumbs.db
+Desktop.ini
