@@ -1,4 +1,4 @@
-# Automated End-to-End MLOps Pipeline Architecture 🚀🔄
+# Automated End-to-End MLOps Pipeline Architecture
 
 ## Project Overview
 This project represents a highly sophisticated, production-grade **MLOps (Machine Learning Operations) Ecosystem** engineered to automate the continuous validation, execution tracking, performance governance, and deployment lifecycle of enterprise machine learning models. 
